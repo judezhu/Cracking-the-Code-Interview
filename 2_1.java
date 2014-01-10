@@ -1,51 +1,77 @@
-//Todo: String should be replaced by generic class
+import java.util.Scanner;
 
-public class Node {
-	private Node next;
-	private char data;
+import RemoveDuplicate.Node;
 
-	public Node(){
-		next = null;
-		data = "";
-	}
-
-	public char getData(){
-		return data;
-	}	
-
-	private void setData(String str){
-		data = str;
-	}
-
-	public Node getNext(){
-		Node = next;
-	}
-
-}
-
-
-public class SingleLinkedList(){
-	private Node head;
-	public SingleLinkedList(){
-		head = null;
-	}
-	
-	public Node getFirst(){
-	
-	}
-
-	public SingleLinkedList deleteNode(char ch){
-
-	}
-
-}
 
 public class RemoveDuplicate {
 
+	//2.1 Write code to remove duplicates from an unsorted linked list.
 
-	public static void removeDuplicate(){
-		
+	//Todo: String should be replaced by generic class
+
+
+	public static class Node {
+		private Node next;
+		private char data;
+
+		public Node(){
+			next = null;
+			data = 0;
+		}
+
+		public Node(char ch){
+			next = null;
+			data = ch;
+		}
+
+		public char getData(){
+			return data;
+		}	
+
+		private void setData(char ch){
+			data = ch;
+		}
+
+		public Node getNext(){
+			Node node = next;
+			return node;
+		}
+
+		public void setNext(Node node){
+			next = node;
+		}
 	}
+
+
+
+	//convert string into single unsorted linked list
+	public static Node init(char[] content, int length){
+		
+		Node head = new Node();
+		Node temp = head;
+
+		for(int i=0; i<length; i++){
+			temp.setData(content[i]);
+		    System.out.println(content[i]);
+		    Node node = new Node();
+		    temp.setNext(node);
+			temp = temp.getNext();				
+		}
+		
+		return head;
+	}
+
+	//method1: with buffer
+	public static void removeDuplicate1(){
+
+
+	}
+
+	//method2: without buffer
+	public static void removeDuplicate2(){
+
+	}	
+
 
 	//public static 
 	/**
@@ -53,12 +79,18 @@ public class RemoveDuplicate {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-                Scanner input = new Scanner(System.in);
-                System.out.println("Please enter your string:");
-                String in = input.nextLine();
-                char content[] = in.toCharArray();
-                System.out.println(replaceSpace(content));
-                input.close();
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter your string:");
+		String in = input.nextLine();
+		int length = in.length();
+		char[] content = in.toCharArray();
+		Node head = init(content, length);
+
+		System.out.println();
+		input.close();
 	}
 
 }
+
+
+
