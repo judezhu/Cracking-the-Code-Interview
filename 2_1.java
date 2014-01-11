@@ -1,8 +1,6 @@
 import java.util.HashSet;
 import java.util.Scanner;
 
-//word
-
 public class RemoveDuplicate {
 
 	//2.1 Write code to remove duplicates from an unsorted linked list.
