@@ -1,9 +1,6 @@
 import java.util.HashSet;
 import java.util.Scanner;
 
-import RemoveDuplicate.Node;
-
-
 public class RemoveDuplicate {
 
 	//2.1 Write code to remove duplicates from an unsorted linked list.
@@ -47,40 +44,69 @@ public class RemoveDuplicate {
 
 	//convert string into single unsorted linked list
 	public static Node init(char[] content, int length){
-		
+
 		Node head = new Node();
 		Node temp = head;
 
 		for(int i=0; i<length; i++){
 			temp.setData(content[i]);
-		    System.out.println(content[i]);
-		    Node node = new Node();
-		    temp.setNext(node);
+			System.out.println(content[i]);
+			Node node = new Node();
+			temp.setNext(node);
 			temp = temp.getNext();				
 		}
-		
+
 		return head;
+	}
+	
+	//print out the single linked list
+	public static void printList(Node head){
+		while(head.getNext() != null){
+			System.out.println(head.getData());
+		}
 	}
 
 	//method1: with buffer
-	public static void removeDuplicate1(Node head){
-		HashSet<E> set = new HashSet();
+	public static Node removeDuplicate1(Node head){
+		HashSet<Character> set = new HashSet<Character>();
+		Node previous = head;
 		Node current = head.getNext();
-		set.put(head.getData());
-		
+		set.add(previous.getData());
+
 		if(!set.contains(current.getData())){
-			set.put(current.getData());
-			head = head.getNext();
+			set.add(current.getData());
+			previous = previous.getNext();
 			current = current.getNext();
 		}
 		else{
-			head.setNext(current.getNext());
+			previous.setNext(current.getNext());
 		}
+		return head;
 	}
 
 	//method2: without buffer
-	public static void removeDuplicate2(Node head){
+	public static Node removeDuplicate2(Node head){
+		
+		Node previous = head;
+		Node current  = head.getNext();
+		Node runner = current.getNext();
 
+		boolean isDuplicate = false;
+		
+		while(head.getNext() != null){
+			while(current.getData() != runner.getData() && runner.getNext() != null){
+				runner = runner.getNext();
+				isDuplicate = true;
+			}
+			if(isDuplicate){
+				previous.setNext(current.getNext());
+				isDuplicate = false;
+			}
+			previous = previous.getNext();
+			current = current.getNext();
+		}
+		
+		return head;
 	}	
 
 
@@ -96,8 +122,13 @@ public class RemoveDuplicate {
 		int length = in.length();
 		char[] content = in.toCharArray();
 		Node head = init(content, length);
+		
+		Node newHead1 = removeDuplicate1(head);
+		Node newHead2 = removeDuplicate2(head);
+		
+		printList(newHead1);
+		printList(newHead2);
 
-	
 		input.close();
 	}
 
