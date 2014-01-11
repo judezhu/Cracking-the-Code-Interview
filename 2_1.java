@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.Scanner;
 
 import RemoveDuplicate.Node;
@@ -62,13 +63,23 @@ public class RemoveDuplicate {
 	}
 
 	//method1: with buffer
-	public static void removeDuplicate1(){
-
-
+	public static void removeDuplicate1(Node head){
+		HashSet<E> set = new HashSet();
+		Node current = head.getNext();
+		set.put(head.getData());
+		
+		if(!set.contains(current.getData())){
+			set.put(current.getData());
+			head = head.getNext();
+			current = current.getNext();
+		}
+		else{
+			head.setNext(current.getNext());
+		}
 	}
 
 	//method2: without buffer
-	public static void removeDuplicate2(){
+	public static void removeDuplicate2(Node head){
 
 	}	
 
@@ -86,7 +97,7 @@ public class RemoveDuplicate {
 		char[] content = in.toCharArray();
 		Node head = init(content, length);
 
-		System.out.println();
+	
 		input.close();
 	}
 
