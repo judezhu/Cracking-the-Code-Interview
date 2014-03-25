@@ -1,4 +1,4 @@
-import java.util.Arrays;
+:mport java.util.Arrays;
 import java.util.Scanner;
 
 

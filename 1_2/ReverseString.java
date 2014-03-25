@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 /**
  * Tricky point: only loop half of the string
@@ -19,16 +18,4 @@ public class ReverseString {
 		String newStr = new String(arrayTemp);
 		return newStr;
 	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Please enter your string:");
-		String in = input.nextLine();
-		System.out.println(reverseString(in));
-		input.close();
-	}
-
 }

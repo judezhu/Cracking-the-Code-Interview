@@ -21,21 +21,4 @@ public class UniqueCharacterOneTemp {
 		}
 		return true;
 	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Please enter your string:");
-		String in = input.nextLine();
-		if(isCharacterUnique(in)){
-			System.out.println("All unqiue");
-		}
-		else{
-			System.out.println("Not all unqiue");
-		}
-		input.close();
-	}
-
 }
