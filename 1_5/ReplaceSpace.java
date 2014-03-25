@@ -15,8 +15,8 @@ public class ReplaceSpace {
 		
 		int newLength = length + 2*spaceCount;
 		
-		char[] newCharArray = new char[newLength+1];
-		newCharArray[newLength] = '\0';
+		char[] newCharArray = new char[newLength];
+		//newCharArray[newLength] = '\0';
 		
 		for(int i= (length-1); i>=0; i--){
 		
@@ -35,19 +35,4 @@ public class ReplaceSpace {
 		return newCharArray;
 
 	}
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		Scanner input = new Scanner(System.in);
-		System.out.println("Please enter your string:");
-		String in = input.nextLine();
-		char content[] = in.toCharArray();
-		System.out.println(replaceSpace(content));
-		input.close();
-
-	}
-
 }
