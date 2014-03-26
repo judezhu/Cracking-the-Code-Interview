@@ -17,19 +17,19 @@ public class ReplaceSpace {
 		
 		char[] newCharArray = new char[newLength];
 		//newCharArray[newLength] = '\0';
+		int count =0;
 		
-		for(int i= (length-1); i>=0; i--){
+		for(int i= 0; i < length ; i++){
 		
 			if(charArray[i] == ' ')
 			{
-				
-				newCharArray[spaceCount * 2 + i] = '0';
-				newCharArray[spaceCount * 2 + i-1] = '2';
-				newCharArray[spaceCount * 2 + i-2] = '%';
-				spaceCount--;
+				newCharArray[count * 2 + i] = '%';
+				newCharArray[count * 2 + i+1] = '2';
+				newCharArray[count * 2 + i+2] = '0';
+				count++;
 			}
 			else{
-				newCharArray[i+spaceCount *2] = charArray[i];
+				newCharArray[i+count *2] = charArray[i];
 			}
 		}
 		return newCharArray;
